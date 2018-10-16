@@ -83,6 +83,7 @@ public extension UIView {
     public func constrain(side: Side, _ comparator: Comparator = .equalTo, to view: UIView, constant: CGFloat = 0, isSafe: Bool = false) -> NSLayoutConstraint {
         turnOffAutoConstraints()
         var constraint: NSLayoutConstraint
+        let constant = [.bottom, .right].contains(side) ? -constant : constant
 
         switch side {
         case .top:
@@ -137,6 +138,7 @@ public extension UIView {
         turnOffAutoConstraints()
         let anchor = side == .top ? topAnchor : bottomAnchor
         let anchor2 = view.anchorFor(side: side2, isSafe: isSafe)
+        let constant = side == .bottom ? -constant : constant
 
         var constraint: NSLayoutConstraint
         switch comparator {
@@ -170,6 +172,7 @@ public extension UIView {
         turnOffAutoConstraints()
         let anchor = side == .left ? leftAnchor : rightAnchor
         let anchor2 = view.anchorFor(side: side2, isSafe: isSafe)
+        let constant = side == .right ? -constant : constant
 
         var constraint: NSLayoutConstraint
         switch comparator {
