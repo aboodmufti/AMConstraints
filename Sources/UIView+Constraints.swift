@@ -8,79 +8,15 @@
 
 import UIKit
 
-public enum Side {
-    case top, bottom, left, right
-    public static var allSides: Set<Side> { return [.top, .bottom, .left, .right] }
-}
-
-public enum SideX { case left, right }
-public enum SideY { case top, bottom }
-
-public enum Dimension {
-    case width, height
-    public static var allDimensions: Set<Dimension> { return [.width, .height] }
-}
-
-public enum Axis {
-    case centerX, centerY
-    public static var allAxes: Set<Axis> { return [.centerX, .centerY] }
-}
 
 public enum Comparator { case equalTo, greaterThan, lessThan }
-
-public struct Sides {
-    public var top    : NSLayoutConstraint?
-    public var bottom : NSLayoutConstraint?
-    public var left   : NSLayoutConstraint?
-    public var right  : NSLayoutConstraint?
-
-    init() { }
-
-    mutating func set(constraint: NSLayoutConstraint, side: Side) {
-        switch side {
-        case .top    : top = constraint
-        case .bottom : bottom = constraint
-        case .left   : left = constraint
-        case .right  : right = constraint
-        }
-    }
-}
-
-public struct Dimensions {
-    public var width  : NSLayoutConstraint?
-    public var height : NSLayoutConstraint?
-
-    init() { }
-
-    mutating func set(constraint: NSLayoutConstraint, dimension: Dimension) {
-        switch dimension {
-        case .width  : width = constraint
-        case .height : height = constraint
-        }
-    }
-}
-
-public struct Axes {
-    public var centerX: NSLayoutConstraint?
-    public var centerY: NSLayoutConstraint?
-
-    init() { }
-
-    mutating func set(constraint: NSLayoutConstraint, axis: Axis) {
-        switch axis {
-        case .centerX: centerX = constraint
-        case .centerY: centerY = constraint
-        }
-    }
-}
-
 
 public extension UIView {
 
     // MARK: - Sides
 
     @discardableResult
-    public func constrain(side: Side, _ comparator: Comparator = .equalTo, to view: UIView, constant: CGFloat = 0, isSafe: Bool = false) -> NSLayoutConstraint {
+    private func constrain(side: Side, _ comparator: Comparator = .equalTo, to view: UIView, constant: CGFloat = 0, isSafe: Bool = false) -> NSLayoutConstraint {
         turnOffAutoConstraints()
         var constraint: NSLayoutConstraint
         let constant = [.bottom, .right].contains(side) ? -constant : constant
@@ -126,12 +62,14 @@ public extension UIView {
         var constraints = Sides()
 
         for side in sides {
-            let constraint = constrain(side: side, comparator, to: view,  constant: constant, isSafe: isSafe)
+            let constraint = constrain(side: side, comparator, to: view, constant: constant, isSafe: isSafe)
             constraints.set(constraint: constraint, side: side)
         }
 
         return constraints
     }
+
+    // MARK: Sides Y
 
     @discardableResult
     public func constrain(side: SideY, _ comparator: Comparator = .equalTo, to side2: SideY, of view: UIView, constant: CGFloat = 0, isSafe: Bool = false) -> NSLayoutConstraint {
@@ -166,6 +104,8 @@ public extension UIView {
         constraint.isActive = true
         return constraint
     }
+
+    // MARK: Sides X
 
     @discardableResult
     public func constrain(side: SideX, _ comparator: Comparator = .equalTo, to side2: SideX, of view: UIView, constant: CGFloat = 0, isSafe: Bool = false) -> NSLayoutConstraint {
@@ -268,7 +208,7 @@ public extension UIView {
 
     // MARK: - Axes
     @discardableResult
-    public func constrain(axis: Axis, _ comparator: Comparator = .equalTo, to view: UIView, constant: CGFloat = 0) -> NSLayoutConstraint {
+    private func constrain(axis: Axis, _ comparator: Comparator = .equalTo, to view: UIView, constant: CGFloat = 0) -> NSLayoutConstraint {
         turnOffAutoConstraints()
         var constraint: NSLayoutConstraint
 

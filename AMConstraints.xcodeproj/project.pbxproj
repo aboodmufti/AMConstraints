@@ -11,6 +11,9 @@
 		721933FE217518B500B9F684 /* AMConstraintsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721933FD217518B500B9F684 /* AMConstraintsTests.swift */; };
 		72193400217518B500B9F684 /* AMConstraints.h in Headers */ = {isa = PBXBuildFile; fileRef = 721933F2217518B500B9F684 /* AMConstraints.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7219340A217518CF00B9F684 /* UIView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72193409217518CF00B9F684 /* UIView+Constraints.swift */; };
+		721934182176583C00B9F684 /* Axes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721934152176583B00B9F684 /* Axes.swift */; };
+		721934192176583C00B9F684 /* Dimensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721934162176583B00B9F684 /* Dimensions.swift */; };
+		7219341A2176583C00B9F684 /* Sides.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721934172176583B00B9F684 /* Sides.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,6 +34,9 @@
 		721933FD217518B500B9F684 /* AMConstraintsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AMConstraintsTests.swift; sourceTree = "<group>"; };
 		721933FF217518B500B9F684 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		72193409217518CF00B9F684 /* UIView+Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Constraints.swift"; sourceTree = "<group>"; };
+		721934152176583B00B9F684 /* Axes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Axes.swift; sourceTree = "<group>"; };
+		721934162176583B00B9F684 /* Dimensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dimensions.swift; sourceTree = "<group>"; };
+		721934172176583B00B9F684 /* Sides.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sides.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +81,9 @@
 			children = (
 				721933F2217518B500B9F684 /* AMConstraints.h */,
 				72193409217518CF00B9F684 /* UIView+Constraints.swift */,
+				721934152176583B00B9F684 /* Axes.swift */,
+				721934162176583B00B9F684 /* Dimensions.swift */,
+				721934172176583B00B9F684 /* Sides.swift */,
 				721933F3217518B500B9F684 /* Info.plist */,
 			);
 			path = Sources;
@@ -198,7 +207,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				721934182176583C00B9F684 /* Axes.swift in Sources */,
 				7219340A217518CF00B9F684 /* UIView+Constraints.swift in Sources */,
+				7219341A2176583C00B9F684 /* Sides.swift in Sources */,
+				721934192176583C00B9F684 /* Dimensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
