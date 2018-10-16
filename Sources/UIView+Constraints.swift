@@ -81,6 +81,7 @@ public extension UIView {
 
     @discardableResult
     public func constrain(side: Side, _ comparator: Comparator = .equalTo, to view: UIView, constant: CGFloat = 0, isSafe: Bool = false) -> NSLayoutConstraint {
+        turnOffAutoConstraints()
         var constraint: NSLayoutConstraint
 
         switch side {
@@ -120,6 +121,7 @@ public extension UIView {
 
     @discardableResult
     public func constrain(sides: Set<Side>, _ comparator: Comparator = .equalTo, to view: UIView, constant: CGFloat = 0, isSafe: Bool = false) -> Sides {
+        turnOffAutoConstraints()
         var constraints = Sides()
 
         for side in sides {
@@ -132,6 +134,7 @@ public extension UIView {
 
     @discardableResult
     public func constrain(side: SideY, _ comparator: Comparator = .equalTo, to side2: SideY, of view: UIView, constant: CGFloat = 0, isSafe: Bool = false) -> NSLayoutConstraint {
+        turnOffAutoConstraints()
         let anchor = side == .top ? topAnchor : bottomAnchor
         let anchor2 = view.anchorFor(side: side2, isSafe: isSafe)
 
@@ -148,6 +151,7 @@ public extension UIView {
 
     @discardableResult
     public func constrain(side: SideY, _ comparator: Comparator = .equalTo, toCenterYof view: UIView, constant: CGFloat = 0) -> NSLayoutConstraint {
+        turnOffAutoConstraints()
         let anchor = side == .top ? topAnchor : bottomAnchor
 
         var constraint: NSLayoutConstraint
@@ -163,6 +167,7 @@ public extension UIView {
 
     @discardableResult
     public func constrain(side: SideX, _ comparator: Comparator = .equalTo, to side2: SideX, of view: UIView, constant: CGFloat = 0, isSafe: Bool = false) -> NSLayoutConstraint {
+        turnOffAutoConstraints()
         let anchor = side == .left ? leftAnchor : rightAnchor
         let anchor2 = view.anchorFor(side: side2, isSafe: isSafe)
 
@@ -180,6 +185,7 @@ public extension UIView {
 
     @discardableResult
     public func constrain(side: SideX, _ comparator: Comparator = .equalTo, toCenterXof view: UIView, constant: CGFloat = 0) -> NSLayoutConstraint {
+        turnOffAutoConstraints()
         let anchor = side == .left ? leftAnchor : rightAnchor
 
         var constraint: NSLayoutConstraint
@@ -212,6 +218,7 @@ public extension UIView {
 
     @discardableResult
     public func constrain(dimension: Dimension, _ comparator: Comparator = .equalTo, constant: CGFloat) -> NSLayoutConstraint {
+        turnOffAutoConstraints()
         let anchor = dimension == .width ? widthAnchor : heightAnchor
         var constraint: NSLayoutConstraint
 
@@ -227,6 +234,7 @@ public extension UIView {
 
     @discardableResult
     public func constrain(dimension: Dimension, _ comparator: Comparator = .equalTo, to dimension2: Dimension? = nil, of view: UIView, multiplier: CGFloat = 1, constant: CGFloat = 0) -> NSLayoutConstraint {
+        turnOffAutoConstraints()
         let dimension2 = dimension2 ?? dimension
         let anchor = dimension == .width ? widthAnchor : heightAnchor
         let anchor2 = dimension2 == .width ? view.widthAnchor : view.heightAnchor
@@ -244,6 +252,7 @@ public extension UIView {
 
     @discardableResult
     public func constrain(dimensions: Set<Dimension>, _ comparator: Comparator = .equalTo, to view: UIView, multiplier: CGFloat = 1, constant: CGFloat = 0) -> Dimensions {
+        turnOffAutoConstraints()
         var constraints = Dimensions()
 
         for dimension in dimensions {
@@ -257,6 +266,7 @@ public extension UIView {
     // MARK: - Axes
     @discardableResult
     public func constrain(axis: Axis, _ comparator: Comparator = .equalTo, to view: UIView, constant: CGFloat = 0) -> NSLayoutConstraint {
+        turnOffAutoConstraints()
         var constraint: NSLayoutConstraint
 
         switch comparator {
@@ -287,6 +297,7 @@ public extension UIView {
 
     @discardableResult
     public func constrain(axes: Set<Axis>, _ comparator: Comparator = .equalTo, to view: UIView, constant: CGFloat = 0) -> Axes {
+        turnOffAutoConstraints()
         var constraints = Axes()
         
         for axis in axes {
@@ -295,6 +306,10 @@ public extension UIView {
         }
 
         return constraints
+    }
+
+    private func turnOffAutoConstraints() {
+        translatesAutoresizingMaskIntoConstraints = false
     }
 
 }
