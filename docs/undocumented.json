@@ -1,0 +1,292 @@
+{
+  "warnings": [
+    {
+      "file": "/Users/amufti/Desktop/Dev/AMConstraints/Sources/Axes.swift",
+      "line": 11,
+      "symbol": "Axis",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/amufti/Desktop/Dev/AMConstraints/Sources/Axes.swift",
+      "line": 11,
+      "symbol": "Axis.centerX",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/amufti/Desktop/Dev/AMConstraints/Sources/Axes.swift",
+      "line": 11,
+      "symbol": "Axis.centerY",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/amufti/Desktop/Dev/AMConstraints/Sources/Axes.swift",
+      "line": 13,
+      "symbol": "Axes",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/amufti/Desktop/Dev/AMConstraints/Sources/Axes.swift",
+      "line": 14,
+      "symbol": "Axes.centerX",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/amufti/Desktop/Dev/AMConstraints/Sources/Axes.swift",
+      "line": 15,
+      "symbol": "Axes.centerY",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/amufti/Desktop/Dev/AMConstraints/Sources/Axes.swift",
+      "line": 28,
+      "symbol": "Set.all",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/amufti/Desktop/Dev/AMConstraints/Sources/Axes.swift",
+      "line": 29,
+      "symbol": "Set.centerX",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/amufti/Desktop/Dev/AMConstraints/Sources/Axes.swift",
+      "line": 30,
+      "symbol": "Set.centerY",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/amufti/Desktop/Dev/AMConstraints/Sources/Dimensions.swift",
+      "line": 11,
+      "symbol": "Dimension",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/amufti/Desktop/Dev/AMConstraints/Sources/Dimensions.swift",
+      "line": 11,
+      "symbol": "Dimension.height",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/amufti/Desktop/Dev/AMConstraints/Sources/Dimensions.swift",
+      "line": 11,
+      "symbol": "Dimension.width",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/amufti/Desktop/Dev/AMConstraints/Sources/Dimensions.swift",
+      "line": 13,
+      "symbol": "Dimensions",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/amufti/Desktop/Dev/AMConstraints/Sources/Dimensions.swift",
+      "line": 14,
+      "symbol": "Dimensions.width",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/amufti/Desktop/Dev/AMConstraints/Sources/Dimensions.swift",
+      "line": 15,
+      "symbol": "Dimensions.height",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/amufti/Desktop/Dev/AMConstraints/Sources/Dimensions.swift",
+      "line": 28,
+      "symbol": "Set.all",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/amufti/Desktop/Dev/AMConstraints/Sources/Dimensions.swift",
+      "line": 29,
+      "symbol": "Set.width",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/amufti/Desktop/Dev/AMConstraints/Sources/Dimensions.swift",
+      "line": 30,
+      "symbol": "Set.height",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/amufti/Desktop/Dev/AMConstraints/Sources/Sides.swift",
+      "line": 11,
+      "symbol": "Side",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/amufti/Desktop/Dev/AMConstraints/Sources/Sides.swift",
+      "line": 11,
+      "symbol": "Side.bottom",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/amufti/Desktop/Dev/AMConstraints/Sources/Sides.swift",
+      "line": 11,
+      "symbol": "Side.left",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/amufti/Desktop/Dev/AMConstraints/Sources/Sides.swift",
+      "line": 11,
+      "symbol": "Side.right",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/amufti/Desktop/Dev/AMConstraints/Sources/Sides.swift",
+      "line": 11,
+      "symbol": "Side.top",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/amufti/Desktop/Dev/AMConstraints/Sources/Sides.swift",
+      "line": 12,
+      "symbol": "SideX",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/amufti/Desktop/Dev/AMConstraints/Sources/Sides.swift",
+      "line": 12,
+      "symbol": "SideX.left",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/amufti/Desktop/Dev/AMConstraints/Sources/Sides.swift",
+      "line": 12,
+      "symbol": "SideX.right",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/amufti/Desktop/Dev/AMConstraints/Sources/Sides.swift",
+      "line": 13,
+      "symbol": "SideY",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/amufti/Desktop/Dev/AMConstraints/Sources/Sides.swift",
+      "line": 13,
+      "symbol": "SideY.bottom",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/amufti/Desktop/Dev/AMConstraints/Sources/Sides.swift",
+      "line": 13,
+      "symbol": "SideY.top",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/amufti/Desktop/Dev/AMConstraints/Sources/Sides.swift",
+      "line": 15,
+      "symbol": "Sides",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/amufti/Desktop/Dev/AMConstraints/Sources/Sides.swift",
+      "line": 16,
+      "symbol": "Sides.top",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/amufti/Desktop/Dev/AMConstraints/Sources/Sides.swift",
+      "line": 17,
+      "symbol": "Sides.bottom",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/amufti/Desktop/Dev/AMConstraints/Sources/Sides.swift",
+      "line": 18,
+      "symbol": "Sides.left",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/amufti/Desktop/Dev/AMConstraints/Sources/Sides.swift",
+      "line": 19,
+      "symbol": "Sides.right",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/amufti/Desktop/Dev/AMConstraints/Sources/Sides.swift",
+      "line": 34,
+      "symbol": "Set.all",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/amufti/Desktop/Dev/AMConstraints/Sources/Sides.swift",
+      "line": 35,
+      "symbol": "Set.top",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/amufti/Desktop/Dev/AMConstraints/Sources/Sides.swift",
+      "line": 36,
+      "symbol": "Set.bottom",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/amufti/Desktop/Dev/AMConstraints/Sources/Sides.swift",
+      "line": 37,
+      "symbol": "Set.left",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/amufti/Desktop/Dev/AMConstraints/Sources/Sides.swift",
+      "line": 38,
+      "symbol": "Set.right",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/amufti/Desktop/Dev/AMConstraints/Sources/UIView+Constraints.swift",
+      "line": 14,
+      "symbol": "UIView.Relation",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/amufti/Desktop/Dev/AMConstraints/Sources/UIView+Constraints.swift",
+      "line": 415,
+      "symbol": "UIView.boundsCenter",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    }
+  ],
+  "source_directory": "/Users/amufti/Desktop/Dev/AMConstraints"
+}
