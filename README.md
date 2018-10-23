@@ -5,6 +5,8 @@
 
 This framework is basically a wrapper around the anchor API that Apple introduced in iOS 9. It provides functions that are supposed to make dealing with constriants easier. This is still a work in progress though.
 
+## Docs
+[Here](https://aboodmufti.github.io/AMConstraints/docs) you can find the official library documentation.
 
 # Installation
 
@@ -42,9 +44,6 @@ newView.constrain(dimensions: .width, to: view, multiplier: 0.8)
 # Contribute
 Contributions to AMConstraints are more than welcome, check the `LICENSE` file for more info.
 
-
-## Docs
-Here you can [find the official library documentation](https://aboodmufti.github.io/AMConstraints/docs).
 
 [license-image]: https://img.shields.io/hexpm/l/plug.svg
 [license-url]: LICENSE
