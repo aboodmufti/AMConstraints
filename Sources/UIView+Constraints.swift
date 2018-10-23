@@ -367,7 +367,7 @@ public extension UIView {
     /// - Parameters:
     ///     - view: The view to which the "calling view" should be constrained.
     ///     - normalizedPosition: vertical position between 0 (top) and 1 (bottom).
-    func constrain(side: Side, view: UIView, at normalizedPosition: CGFloat ) -> NSLayoutConstraint {
+    public func constrain(side: Side, view: UIView, at normalizedPosition: CGFloat ) -> NSLayoutConstraint {
         var attribute: NSLayoutConstraint.Attribute
         var attribute2: NSLayoutConstraint.Attribute
         switch side {
@@ -426,6 +426,7 @@ func -(lhs: CGPoint, rhs: CGPoint) -> CGPoint {
 
 
 /*
+ Functions to add:
  - top to bottom
  - bottom to top
  - left to right
