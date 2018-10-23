@@ -1,37 +1,48 @@
-## Welcome to GitHub Pages
+ # AMConstraints
+> This is an iOS framework that makes it easier to deal with Autolayout constraints.
 
-You can use the [editor on GitHub](https://github.com/aboodmufti/AMConstraints/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+[![License][license-image]][license-url]
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+This framework is basically a wrapper around the anchor API that Apple introduced in iOS 9. It provides functions that are supposed to make dealing with constriants easier. This is still a work in progress though.
 
-### Markdown
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+# Installation
 
-```markdown
-Syntax highlighted code block
+## Carthage
+1. Add the following to your Cartfile
 
-# Header 1
-## Header 2
-### Header 3
+        github "aboodmufti/AMConstraints"
+        
+2. Run `carthage update`
+3. Add the framework to your project, as defined [here](https://github.com/Carthage/Carthage#if-youre-building-for-ios-tvos-or-watchos)
 
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+# Some usage examples:
+For the next few examples, we'll use the following view:
+```Swift
+let newView = UIView()
+view.addSubview(newView)
 ```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+Constrain all sides:
+```Swift
+newView.constrain(sides: .all, to: view, constant: 5)
+```
 
-### Jekyll Themes
+Constrain one or multiple sides:
+```Swift
+newView.constrain(sides: .top, to: view, constant: 5)
+newView.constrain(sides: [.left, .right], to: view, constant: 5)
+```
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/aboodmufti/AMConstraints/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+Constrain dimensions:
+```Swift
+newView.constrain(dimensions: .width, to: view, multiplier: 0.8)
+```
 
-### Support or Contact
+# Contribute
+Contribution to AMConstraints are more than welcome, check the `LICENSE` file for more info.
 
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+
+[license-image]: https://img.shields.io/hexpm/l/plug.svg
+[license-url]: LICENSE
