@@ -55,7 +55,7 @@ public extension UIView {
             case .lessThanOrEqual    : constraint = rightAnchor.constraint(lessThanOrEqualTo: anchor, constant: constant)
             }
         }
-//        NSLayoutConstraint(item: <#T##Any#>, attribute: <#T##NSLayoutConstraint.Attribute#>, relatedBy: <#T##NSLayoutConstraint.Relation#>, toItem: <#T##Any?#>, attribute: <#T##NSLayoutConstraint.Attribute#>, multiplier: <#T##CGFloat#>, constant: <#T##CGFloat#>)
+
         constraint.isActive = true
         return constraint
     }
@@ -423,3 +423,14 @@ func +(lhs: CGPoint, rhs: CGPoint) -> CGPoint {
 func -(lhs: CGPoint, rhs: CGPoint) -> CGPoint {
     return CGPoint(x: lhs.x - rhs.x, y: lhs.y - rhs.y)
 }
+
+
+/*
+ - top to bottom
+ - bottom to top
+ - left to right
+ - right to left
+ - width to height
+ - height to width
+ -
+ */
