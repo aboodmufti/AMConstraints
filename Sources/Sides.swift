@@ -18,7 +18,7 @@ public struct Sides {
     public var left   : NSLayoutConstraint?
     public var right  : NSLayoutConstraint?
 
-    init() { }
+    public init() { }
 
     mutating func set(constraint: NSLayoutConstraint, side: Side) {
         switch side {

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		72072ACC2183AE3A0047192A /* CGPoint+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72072ACB2183AE3A0047192A /* CGPoint+Extensions.swift */; };
 		721933F9217518B500B9F684 /* AMConstraints.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 721933EF217518B500B9F684 /* AMConstraints.framework */; };
 		721933FE217518B500B9F684 /* AMConstraintsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721933FD217518B500B9F684 /* AMConstraintsTests.swift */; };
 		72193400217518B500B9F684 /* AMConstraints.h in Headers */ = {isa = PBXBuildFile; fileRef = 721933F2217518B500B9F684 /* AMConstraints.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -27,6 +28,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		72072ACB2183AE3A0047192A /* CGPoint+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGPoint+Extensions.swift"; sourceTree = "<group>"; };
 		721933EF217518B500B9F684 /* AMConstraints.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AMConstraints.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		721933F2217518B500B9F684 /* AMConstraints.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMConstraints.h; sourceTree = "<group>"; };
 		721933F3217518B500B9F684 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -81,6 +83,7 @@
 			children = (
 				721933F2217518B500B9F684 /* AMConstraints.h */,
 				72193409217518CF00B9F684 /* UIView+Constraints.swift */,
+				72072ACB2183AE3A0047192A /* CGPoint+Extensions.swift */,
 				721934152176583B00B9F684 /* Axes.swift */,
 				721934162176583B00B9F684 /* Dimensions.swift */,
 				721934172176583B00B9F684 /* Sides.swift */,
@@ -208,6 +211,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				721934182176583C00B9F684 /* Axes.swift in Sources */,
+				72072ACC2183AE3A0047192A /* CGPoint+Extensions.swift in Sources */,
 				7219340A217518CF00B9F684 /* UIView+Constraints.swift in Sources */,
 				7219341A2176583C00B9F684 /* Sides.swift in Sources */,
 				721934192176583C00B9F684 /* Dimensions.swift in Sources */,

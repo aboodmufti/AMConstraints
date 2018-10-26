@@ -20,7 +20,7 @@ public extension UIView {
     // MARK: - Sides
 
     @discardableResult
-    private func constrain(side: Side, _ relation: Relation = .equal, to view: UIView, constant: CGFloat = 0, isSafe: Bool = false) -> NSLayoutConstraint {
+    private func constrain(side: Side, _ relation: Relation = .equal, to view: UIView, constant: CGFloat = 0, isSafe: Bool = false, priority: UILayoutPriority = .required) -> NSLayoutConstraint {
         turnOffAutoConstraints()
         var constraint: NSLayoutConstraint
         let constant = [.bottom, .right].contains(side) ? -constant : constant
@@ -56,6 +56,7 @@ public extension UIView {
             }
         }
 
+        constraint.priority = priority
         constraint.isActive = true
         return constraint
     }
@@ -67,14 +68,15 @@ public extension UIView {
     ///   - view: The view to pin the calling view to.
     ///   - constant: The constant offset for the constraint. A positive value moves the given sides towards the center of the given view. Defaults to `0`
     ///   - isSafe: if `true` the `safeAreaLayoutGuide` for the given view is used. Defaults to `false`
+    ///   - priority: The priority of the constraint. Defaults to `.required`
     /// - returns: A new `Sides` instance that contains the appropriate constraints.
     @discardableResult
-    public func constrain(sides: Set<Side>, _ relation: Relation = .equal, to view: UIView, constant: CGFloat = 0, isSafe: Bool = false) -> Sides {
+    public func constrain(sides: Set<Side>, _ relation: Relation = .equal, to view: UIView, constant: CGFloat = 0, isSafe: Bool = false, priority: UILayoutPriority = .required) -> Sides {
         turnOffAutoConstraints()
         var constraints = Sides()
 
         for side in sides {
-            let constraint = constrain(side: side, relation, to: view, constant: constant, isSafe: isSafe)
+            let constraint = constrain(side: side, relation, to: view, constant: constant, isSafe: isSafe, priority: priority)
             constraints.set(constraint: constraint, side: side)
         }
 
@@ -99,9 +101,10 @@ public extension UIView {
     ///   - view: The view to pin the calling view to.
     ///   - constant: The constant offset for the constraint. A positive value moves the given sides towards the center of the given view. Defaults to `0`
     ///   - isSafe: if `true` the `safeAreaLayoutGuide` for the given view is used. Defaults to `false`
+    ///   - priority: The priority of the constraint. Defaults to `.required`
     /// - returns: The newly created constraint.
     @discardableResult
-    public func constrain(side: SideY, _ relation: Relation = .equal, to side2: SideY, of view: UIView, constant: CGFloat = 0, isSafe: Bool = false) -> NSLayoutConstraint {
+    public func constrain(side: SideY, _ relation: Relation = .equal, to side2: SideY, of view: UIView, constant: CGFloat = 0, isSafe: Bool = false, priority: UILayoutPriority = .required) -> NSLayoutConstraint {
         turnOffAutoConstraints()
         let anchor = side == .top ? topAnchor : bottomAnchor
         let anchor2 = view.anchorFor(side: side2, isSafe: isSafe)
@@ -113,7 +116,8 @@ public extension UIView {
         case .greaterThanOrEqual : constraint = anchor.constraint(greaterThanOrEqualTo: anchor2, constant: constant)
         case .lessThanOrEqual    : constraint = anchor.constraint(lessThanOrEqualTo: anchor2, constant: constant)
         }
-
+        anchor.constraint(equalToSystemSpacingBelow: <#T##NSLayoutYAxisAnchor#>, multiplier: <#T##CGFloat#>)
+        constraint.priority = priority
         constraint.isActive = true
         return constraint
     }
@@ -126,9 +130,10 @@ public extension UIView {
     ///   - relation: The relationship between the left side of the constraint and the right side of the constraint. Defaults to `.equal`
     ///   - view: The view to pin the calling view to.
     ///   - constant: The constant offset for the constraint. A positive value moves the given sides towards the center of the given view. Defaults to `0`
+    ///   - priority: The priority of the constraint. Defaults to `.required`
     /// - returns: The newly created constraint.
     @discardableResult
-    public func constrain(side: SideY, _ relation: Relation = .equal, toCenterYof view: UIView, constant: CGFloat = 0) -> NSLayoutConstraint {
+    public func constrain(side: SideY, _ relation: Relation = .equal, toCenterYof view: UIView, constant: CGFloat = 0, priority: UILayoutPriority = .required) -> NSLayoutConstraint {
         turnOffAutoConstraints()
         let anchor = side == .top ? topAnchor : bottomAnchor
 
@@ -139,6 +144,7 @@ public extension UIView {
         case .lessThanOrEqual    : constraint = anchor.constraint(lessThanOrEqualTo: view.centerYAnchor, constant: constant)
         }
 
+        constraint.priority = priority
         constraint.isActive = true
         return constraint
     }
@@ -161,9 +167,10 @@ public extension UIView {
     ///   - view: The view to pin the calling view to.
     ///   - constant: The constant offset for the constraint. A positive value moves the given sides towards the center of the given view. Defaults to `0`
     ///   - isSafe: if `true` the `safeAreaLayoutGuide` for the given view is used. Defaults to `false`
+    ///   - priority: The priority of the constraint. Defaults to `.required`
     /// - returns: The newly created constraint.
     @discardableResult
-    public func constrain(side: SideX, _ relation: Relation = .equal, to side2: SideX, of view: UIView, constant: CGFloat = 0, isSafe: Bool = false) -> NSLayoutConstraint {
+    public func constrain(side: SideX, _ relation: Relation = .equal, to side2: SideX, of view: UIView, constant: CGFloat = 0, isSafe: Bool = false, priority: UILayoutPriority = .required) -> NSLayoutConstraint {
         turnOffAutoConstraints()
         let anchor = side == .left ? leftAnchor : rightAnchor
         let anchor2 = view.anchorFor(side: side2, isSafe: isSafe)
@@ -176,6 +183,7 @@ public extension UIView {
         case .lessThanOrEqual    : constraint = anchor.constraint(lessThanOrEqualTo: anchor2, constant: constant)
         }
 
+        constraint.priority = priority
         constraint.isActive = true
 
         return constraint
@@ -190,9 +198,10 @@ public extension UIView {
     ///   - relation: The relationship between the left side of the constraint and the right side of the constraint. Defaults to `.equal`
     ///   - view: The view to pin the calling view to.
     ///   - constant: The constant offset for the constraint. A positive value moves the given sides towards the center of the given view. Defaults to `0`
+    ///   - priority: The priority of the constraint. Defaults to `.required`
     /// - returns: The newly created constraint.
     @discardableResult
-    public func constrain(side: SideX, _ relation: Relation = .equal, toCenterXof view: UIView, constant: CGFloat = 0) -> NSLayoutConstraint {
+    public func constrain(side: SideX, _ relation: Relation = .equal, toCenterXof view: UIView, constant: CGFloat = 0, priority: UILayoutPriority = .required) -> NSLayoutConstraint {
         turnOffAutoConstraints()
         let anchor = side == .left ? leftAnchor : rightAnchor
 
@@ -203,6 +212,7 @@ public extension UIView {
         case .lessThanOrEqual    : constraint = anchor.constraint(lessThanOrEqualTo: view.centerXAnchor, constant: constant)
         }
 
+        constraint.priority = priority
         constraint.isActive = true
         return constraint
     }
@@ -231,9 +241,10 @@ public extension UIView {
     ///   - dimension: A `Dimension` that corresponds to the calling view.
     ///   - relation: The relationship between the diension and the constant of the constraint. Defaults to `.equal`
     ///   - constant: The constant offset for the constraint.
+    ///   - priority: The priority of the constraint. Defaults to `.required`
     /// - returns: The newly created constraint.
     @discardableResult
-    public func constrain(dimension: Dimension, _ relation: Relation = .equal, constant: CGFloat) -> NSLayoutConstraint {
+    public func constrain(dimension: Dimension, _ relation: Relation = .equal, constant: CGFloat, priority: UILayoutPriority = .required) -> NSLayoutConstraint {
         turnOffAutoConstraints()
         let anchor = dimension == .width ? widthAnchor : heightAnchor
         var constraint: NSLayoutConstraint
@@ -244,6 +255,7 @@ public extension UIView {
         case .lessThanOrEqual    : constraint = anchor.constraint(lessThanOrEqualToConstant: constant)
         }
 
+        constraint.priority = priority
         constraint.isActive = true
         return constraint
     }
@@ -257,9 +269,10 @@ public extension UIView {
     ///   - view: The view to which we are constraining the calling view.
     ///   - multiplier: The constant multiplied with `dimension2` of the given view. Defaults to `1`.
     ///   - constant: The constant offset for the constraint. Defaults to `0`
+    ///   - priority: The priority of the constraint. Defaults to `.required`
     /// - returns: The newly created constraint.
     @discardableResult
-    public func constrain(dimension: Dimension, _ relation: Relation = .equal, to dimension2: Dimension? = nil, of view: UIView, multiplier: CGFloat = 1, constant: CGFloat = 0) -> NSLayoutConstraint {
+    public func constrain(dimension: Dimension, _ relation: Relation = .equal, to dimension2: Dimension? = nil, of view: UIView, multiplier: CGFloat = 1, constant: CGFloat = 0, priority: UILayoutPriority = .required) -> NSLayoutConstraint {
         turnOffAutoConstraints()
         let dimension2 = dimension2 ?? dimension
         let anchor = dimension == .width ? widthAnchor : heightAnchor
@@ -272,6 +285,7 @@ public extension UIView {
         case .lessThanOrEqual    : constraint = anchor.constraint(lessThanOrEqualTo: anchor2, multiplier: multiplier, constant: constant)
         }
 
+        constraint.priority = priority
         constraint.isActive = true
         return constraint
     }
@@ -284,14 +298,15 @@ public extension UIView {
     ///   - view: The view to which we are constraining the calling view.
     ///   - multiplier: The constant multiplied with `dimension` of the given view. Defaults to `1`.
     ///   - constant: The constant offset for the constraint. Defaults to `0`
+    ///   - priority: The priority of the constraint. Defaults to `.required`
     /// - returns: A new `Dimensions` instance that contains the appropriate constraints.
     @discardableResult
-    public func constrain(dimensions: Set<Dimension>, _ relation: Relation = .equal, to view: UIView, multiplier: CGFloat = 1, constant: CGFloat = 0) -> Dimensions {
+    public func constrain(dimensions: Set<Dimension>, _ relation: Relation = .equal, to view: UIView, multiplier: CGFloat = 1, constant: CGFloat = 0, priority: UILayoutPriority = .required) -> Dimensions {
         turnOffAutoConstraints()
         var constraints = Dimensions()
 
         for dimension in dimensions {
-            let constraint = constrain(dimension: dimension, relation, to: dimension, of: view, multiplier: multiplier, constant: constant)
+            let constraint = constrain(dimension: dimension, relation, to: dimension, of: view, multiplier: multiplier, constant: constant, priority: priority)
             constraints.set(constraint: constraint, dimension: dimension)
         }
 
@@ -301,7 +316,7 @@ public extension UIView {
     // MARK: - Axes
 
     @discardableResult
-    private func constrain(axis: Axis, _ relation: Relation = .equal, to view: UIView, constant: CGFloat = 0) -> NSLayoutConstraint {
+    private func constrain(axis: Axis, _ relation: Relation = .equal, to view: UIView, constant: CGFloat = 0, priority: UILayoutPriority = .required) -> NSLayoutConstraint {
         turnOffAutoConstraints()
         var constraint: NSLayoutConstraint
 
@@ -326,6 +341,7 @@ public extension UIView {
             }
         }
 
+        constraint.priority = priority
         constraint.isActive = true
         return constraint
     }
@@ -339,23 +355,25 @@ public extension UIView {
     ///               view and the same `axes` of the given view. Defaults to `.equal`
     ///   - view: The view to which we are constraining the calling view.
     ///   - constant: The constant offset for the constraint. Defaults to `0`
+    ///   - priority: The priority of the constraint. Defaults to `.required`
     /// - returns: A new `Axes` instance that contains the appropriate constraints.
     @discardableResult
-    public func constrain(axes: Set<Axis>, _ relation: Relation = .equal, to view: UIView, constant: CGFloat = 0) -> Axes {
+    public func constrain(axes: Set<Axis>, _ relation: Relation = .equal, to view: UIView, constant: CGFloat = 0, priority: UILayoutPriority = .required) -> Axes {
         turnOffAutoConstraints()
         var constraints = Axes()
         
         for axis in axes {
-            let constraint = constrain(axis: axis, relation, to: view, constant: constant)
+            let constraint = constrain(axis: axis, relation, to: view, constant: constant, priority: priority)
             constraints.set(constraint: constraint, axis: axis)
         }
 
         return constraints
     }
 
-    /// constrains the top of the view to the given view's
+    /// constrains the given side of the view to the given view's
     /// normalized position.
     ///
+    /// Top:
     /// ```
     ///         ___________ 0
     ///         |         |
@@ -364,10 +382,44 @@ public extension UIView {
     ///  |    | |         |
     ///  |self| |_________| 1
     /// ```
+    /// Bottom:
+    /// ```
+    ///         ___________ 0
+    ///  |    | |         |
+    ///  |self| |         |
+    ///  ------ |  View   |- 0.5 <-- normalizedPosition
+    ///  bottom |         |
+    ///         |_________| 1
+    /// ```
+    /// Left:
+    /// ```
+    ///        _____
+    ///         self| right
+    ///        _____|
+    ///         ___________
+    ///         |         |
+    ///         |  View   |
+    ///         |_________|
+    ///         0    |    1
+    ///             0.5 <-- normalizedPosition
+    /// ```
+    /// Right:
+    /// ```
+    ///              _____
+    ///        left |self
+    ///             |_____
+    ///         ___________
+    ///         |         |
+    ///         |  View   |
+    ///         |_________|
+    ///         0    |    1
+    ///             0.5 <-- normalizedPosition
+    /// ```
     /// - Parameters:
     ///     - view: The view to which the "calling view" should be constrained.
-    ///     - normalizedPosition: vertical position between 0 (top) and 1 (bottom).
-    public func constrain(side: Side, view: UIView, at normalizedPosition: CGFloat ) -> NSLayoutConstraint {
+    ///     - normalizedPosition: vertical/horizontal position between 0 (top) and 1 (bottom).
+    ///     - priority: The priority of the constraint. Defaults to `.required`
+    public func constrain(side: Side, view: UIView, at normalizedPosition: CGFloat, priority: UILayoutPriority = .required) -> NSLayoutConstraint {
         var attribute: NSLayoutConstraint.Attribute
         var attribute2: NSLayoutConstraint.Attribute
         switch side {
@@ -392,6 +444,8 @@ public extension UIView {
                            attribute: attribute2,
                            multiplier: normalizedPosition*2,
                            constant: 0.0)
+
+        constraint.priority = priority
         constraint.isActive = true
 
         return constraint
@@ -402,13 +456,14 @@ public extension UIView {
     ///     - point: The point at which the view should be centered.
     ///              The point's coordinate system should be the same as the given view.
     ///     - view: The view to which the calling view should be constrained.
+    ///     - priority: The priority of the constraint. Defaults to `.required`
     /// - Returns: An Axes instance that contains the appropriate constraints.
     @discardableResult
-    public func constrainCenter(to point: CGPoint, in view: UIView) -> Axes {
+    public func constrainCenter(to point: CGPoint, in view: UIView, priority: UILayoutPriority = .required) -> Axes {
         var axes = Axes()
         let relativePoint = point - view.boundsCenter
-        axes.centerY = constrain(axes: .centerY, to: view, constant: relativePoint.y).centerY
-        axes.centerX = constrain(axes: .centerX, to: view, constant: relativePoint.x).centerX
+        axes.centerY = constrain(axes: .centerY, to: view, constant: relativePoint.y, priority: priority).centerY
+        axes.centerX = constrain(axes: .centerX, to: view, constant: relativePoint.x, priority: priority).centerX
         return axes
     }
 
@@ -416,22 +471,98 @@ public extension UIView {
 }
 
 
-func +(lhs: CGPoint, rhs: CGPoint) -> CGPoint {
-    return CGPoint(x: lhs.x + rhs.x, y: lhs.y + rhs.y)
+
+
+// helper functions
+
+extension UIView {
+
+    /// Constrains the top side of the calling view to the bottom side of the given view.
+    ///
+    /// - parameters:
+    ///   - relation: The relationship between the left side of the constraint and the right side of the constraint. Defaults to `.equal`
+    ///   - view: The view to pin the calling view to.
+    ///   - constant: The constant offset for the constraint. Defaults to `0`
+    ///   - isSafe: if `true` the `safeAreaLayoutGuide` for the given view is used. Defaults to `false`
+    ///   - priority: The priority of the constraint. Defaults to `.required`
+    /// - returns: The newly created constraint.
+    @discardableResult
+    public func constrainTopToBottom(of view: UIView, constant: CGFloat = 0, relation: Relation = .equal, isSafe: Bool = false, priority: UILayoutPriority = .required) -> NSLayoutConstraint {
+        return constrain(side: .top, relation, to: .bottom, of: view, constant: constant, isSafe: isSafe, priority: priority)
+    }
+
+    /// Constrains the bottom side of the calling view to the top side of the given view.
+    ///
+    /// - parameters:
+    ///   - relation: The relationship between the left side of the constraint and the right side of the constraint. Defaults to `.equal`
+    ///   - view: The view to pin the calling view to.
+    ///   - constant: The constant offset for the constraint. Defaults to `0`
+    ///   - isSafe: if `true` the `safeAreaLayoutGuide` for the given view is used. Defaults to `false`
+    ///   - priority: The priority of the constraint. Defaults to `.required`
+    /// - returns: The newly created constraint.
+    @discardableResult
+    public func constrainBottomToTop(of view: UIView, constant: CGFloat = 0, relation: Relation = .equal, isSafe: Bool = false, priority: UILayoutPriority = .required) -> NSLayoutConstraint {
+        return constrain(side: .bottom, relation, to: .top, of: view, constant: constant, isSafe: isSafe, priority: priority)
+    }
+
+    /// Constrains the right side of the calling view to the left side of the given view.
+    ///
+    /// - parameters:
+    ///   - relation: The relationship between the left side of the constraint and the right side of the constraint. Defaults to `.equal`
+    ///   - view: The view to pin the calling view to.
+    ///   - constant: The constant offset for the constraint. Defaults to `0`
+    ///   - isSafe: if `true` the `safeAreaLayoutGuide` for the given view is used. Defaults to `false`
+    ///   - priority: The priority of the constraint. Defaults to `.required`
+    /// - returns: The newly created constraint.
+    @discardableResult
+    public func constrainRightToLeft(of view: UIView, constant: CGFloat = 0, relation: Relation = .equal, isSafe: Bool = false, priority: UILayoutPriority = .required) -> NSLayoutConstraint {
+        return constrain(side: .right, relation, to: .left, of: view, constant: constant, isSafe: isSafe, priority: priority)
+    }
+
+    /// Constrains the left side of the calling view to the right side of the given view.
+    ///
+    /// - parameters:
+    ///   - relation: The relationship between the left side of the constraint and the right side of the constraint. Defaults to `.equal`
+    ///   - view: The view to pin the calling view to.
+    ///   - constant: The constant offset for the constraint. Defaults to `0`
+    ///   - isSafe: if `true` the `safeAreaLayoutGuide` for the given view is used. Defaults to `false`
+    ///   - priority: The priority of the constraint. Defaults to `.required`
+    /// - returns: The newly created constraint.
+    @discardableResult
+    public func constrainLeftToRight(of view: UIView, constant: CGFloat = 0, relation: Relation = .equal, isSafe: Bool = false, priority: UILayoutPriority = .required) -> NSLayoutConstraint {
+        return constrain(side: .left, relation, to: .right, of: view, constant: constant, isSafe: isSafe, priority: priority)
+    }
+
+    @discardableResult
+    public func constrainWidthAndHeight(constant: CGFloat, relation: Relation = .equal, priority: UILayoutPriority = .required) -> Dimensions {
+        var constraints = Dimensions()
+        constraints.width  = constrain(dimension: .width, relation, constant: constant, priority: priority)
+        constraints.height = constrain(dimension: .height, relation, constant: constant, priority: priority)
+        return constraints
+    }
+
+    @discardableResult
+    public func constrainHeightAndWidth(constant: CGFloat, relation: Relation = .equal, priority: UILayoutPriority = .required) -> Dimensions {
+        return constrainWidthAndHeight(constant: constant, relation: relation, priority: priority)
+    }
+
+    @discardableResult
+    public func constrainWidthToHeight(multiplier: CGFloat = 1, constant: CGFloat = 0, priority: UILayoutPriority = .required) -> NSLayoutConstraint {
+        return constrain(dimension: .width, to: .height, of: self, multiplier: multiplier, constant: constant, priority: priority)
+    }
+
+    @discardableResult
+    public func constrainHeightToWidth(multiplier: CGFloat = 1, constant: CGFloat = 0, priority: UILayoutPriority = .required) -> NSLayoutConstraint {
+        return constrain(dimension: .height, to: .width, of: self, multiplier: multiplier, constant: constant, priority: priority)
+    }
+
+    @discardableResult
+    public func constrainHeightAndWidth(to view: UIView, multiplier: CGFloat = 1, constant: CGFloat = 0, relation: Relation = .equal, priority: UILayoutPriority = .required) -> Dimensions {
+        return constrain(dimensions: [.width, .height], relation, to: view, multiplier: multiplier, constant: constant, priority: priority)
+    }
+
+    @discardableResult
+    public func constrainWidthAndHeight(to view: UIView, multiplier: CGFloat = 1, constant: CGFloat = 0, relation: Relation = .equal, priority: UILayoutPriority = .required) -> Dimensions {
+        return constrainHeightAndWidth(to: view, multiplier: multiplier, constant: constant, relation: relation, priority: priority)
+    }
 }
-
-func -(lhs: CGPoint, rhs: CGPoint) -> CGPoint {
-    return CGPoint(x: lhs.x - rhs.x, y: lhs.y - rhs.y)
-}
-
-
-/*
- Functions to add:
- - top to bottom
- - bottom to top
- - left to right
- - right to left
- - width to height
- - height to width
- -
- */

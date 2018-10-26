@@ -14,7 +14,7 @@ public struct Dimensions {
     public var width  : NSLayoutConstraint?
     public var height : NSLayoutConstraint?
 
-    init() { }
+    public init() { }
 
     mutating func set(constraint: NSLayoutConstraint, dimension: Dimension) {
         switch dimension {

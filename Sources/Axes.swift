@@ -14,7 +14,7 @@ public struct Axes {
     public var centerX: NSLayoutConstraint?
     public var centerY: NSLayoutConstraint?
 
-    init() { }
+    public init() { }
 
     mutating func set(constraint: NSLayoutConstraint, axis: Axis) {
         switch axis {
