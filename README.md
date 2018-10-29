@@ -6,7 +6,7 @@
 This framework is basically a wrapper around the anchor API that Apple introduced in iOS 9. It provides functions that are supposed to make dealing with constriants easier. This is still a work in progress though.
 
 ## Docs
-[Here](https://aboodmufti.github.io/AMConstraints/docs) you can find the official library documentation.
+[Here](https://aboodmufti.github.io/AMConstraints/docs/Extensions/UIView.html) you can find the official library documentation.
 
 # Installation
 
