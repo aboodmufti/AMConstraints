@@ -11,7 +11,10 @@ import UIKit
 
 public extension UIView {
 
+    /// typealias to `NSLayoutConstraint.Relation`
     public typealias Relation = NSLayoutConstraint.Relation
+
+    private var boundsCenter: CGPoint { return CGPoint(x: bounds.width/2, y: bounds.height/2) }
 
     private func turnOffAutoConstraints() {
         translatesAutoresizingMaskIntoConstraints = false
@@ -83,7 +86,7 @@ public extension UIView {
         return constraints
     }
 
-    // MARK: Sides Y
+    // MARK: Vertical Sides
 
     /// Adds and activates a `SideY` (top/bottom) constraint that will be pinned to a `SideY` of the given view.
     ///
@@ -149,7 +152,7 @@ public extension UIView {
         return constraint
     }
 
-    // MARK: Sides X
+    // MARK: Horizontal Sides
 
     /// Adds and activates a `SideX` (left/right) constraint that will be pinned to a `SideX` of the given view.
     ///
@@ -239,7 +242,7 @@ public extension UIView {
     ///
     /// - parameters:
     ///   - dimension: A `Dimension` that corresponds to the calling view.
-    ///   - relation: The relationship between the diension and the constant of the constraint. Defaults to `.equal`
+    ///   - relation: The relationship between the dimension and the constant of the constraint. Defaults to `.equal`
     ///   - constant: The constant offset for the constraint.
     ///   - priority: The priority of the constraint. Defaults to `.required`
     /// - returns: The newly created constraint.
@@ -264,7 +267,7 @@ public extension UIView {
     ///
     /// - parameters:
     ///   - dimension: A `Dimension` that corresponds to the calling view.
-    ///   - relation: The relationship between `diension` and `dimension2`. Defaults to `.equal`
+    ///   - relation: The relationship between `dimension` and `dimension2`. Defaults to `.equal`
     ///   - dimension2: A dimension that corresponds to the given view. If this is is set to `nil` then it will be equal to `diemsnion`. Defaults to `nil`
     ///   - view: The view to which we are constraining the calling view.
     ///   - multiplier: The constant multiplied with `dimension2` of the given view. Defaults to `1`.
@@ -294,7 +297,7 @@ public extension UIView {
     ///
     /// - parameters:
     ///   - dimension: One or both `Dimension`(s) that will be constrained to the given view.
-    ///   - relation: The relationship between `diension` and `dimension2`. Defaults to `.equal`
+    ///   - relation: The relationship between `dimension` and `dimension2`. Defaults to `.equal`
     ///   - view: The view to which we are constraining the calling view.
     ///   - multiplier: The constant multiplied with `dimension` of the given view. Defaults to `1`.
     ///   - constant: The constant offset for the constraint. Defaults to `0`
@@ -369,6 +372,10 @@ public extension UIView {
 
         return constraints
     }
+
+
+    // MARK: - Miscellaneous
+
 
     /// constrains the given side of the view to the given view's
     /// normalized position.
@@ -467,7 +474,6 @@ public extension UIView {
         return axes
     }
 
-    var boundsCenter: CGPoint { return CGPoint(x: bounds.width/2, y: bounds.height/2) }
 }
 
 
@@ -476,6 +482,8 @@ public extension UIView {
 // helper functions
 
 extension UIView {
+
+    // MARK: Common functions: Sides
 
     /// Constrains the top side of the calling view to the bottom side of the given view.
     ///
@@ -533,6 +541,16 @@ extension UIView {
         return constrain(side: .left, relation, to: .right, of: view, constant: constant, isSafe: isSafe, priority: priority)
     }
 
+
+    // MARK: Common functions: Dimensions
+
+    /// Constrains the width and height of the view to a constant.
+    ///
+    /// - parameters:
+    ///   - constant: The constant offset for the constraint. Defaults to `0`
+    ///   - relation: The relationship between the width/height and the constant of the constraint. Defaults to `.equal`
+    ///   - priority: The priority of the constraint. Defaults to `.required`
+    /// - returns: A new `Dimensions` instance that contains a width and height constraint.
     @discardableResult
     public func constrainWidthAndHeight(constant: CGFloat, relation: Relation = .equal, priority: UILayoutPriority = .required) -> Dimensions {
         var constraints = Dimensions()
@@ -541,26 +559,67 @@ extension UIView {
         return constraints
     }
 
+    /// Constrains the width and height of the view to a constant.
+    ///
+    /// - parameters:
+    ///   - constant: The constant offset for the constraint. Defaults to `0`
+    ///   - relation: The relationship between the width/height and the constant of the constraint. Defaults to `.equal`
+    ///   - priority: The priority of the constraint. Defaults to `.required`
+    /// - returns: A new `Dimensions` instance that contains a width and height constraint.
     @discardableResult
     public func constrainHeightAndWidth(constant: CGFloat, relation: Relation = .equal, priority: UILayoutPriority = .required) -> Dimensions {
         return constrainWidthAndHeight(constant: constant, relation: relation, priority: priority)
     }
 
+    /// Constrains the width to the height of the calling view.
+    ///
+    /// - parameters:
+    ///   - multiplier: The  aspect ratio of the form `width:height`. Defaults to `1`.
+    ///   - constant  : The constant offset for the constraint. Defaults to `0`
+    ///   - relation  : The relationship between the left side of the constraint and the right side of the constraint. Defaults to `.equal`
+    ///   - priority  : The priority of the constraint. Defaults to `.required`
+    /// - returns: A new `Dimensions` instance that contains a width and height constraints.
     @discardableResult
     public func constrainWidthToHeight(multiplier: CGFloat = 1, constant: CGFloat = 0, priority: UILayoutPriority = .required) -> NSLayoutConstraint {
         return constrain(dimension: .width, to: .height, of: self, multiplier: multiplier, constant: constant, priority: priority)
     }
 
+    /// Constrains the height to the width of the calling view.
+    ///
+    /// - parameters:
+    ///   - multiplier: The  aspect ratio of the form `height:width`. Defaults to `1`.
+    ///   - constant  : The constant offset for the constraint. Defaults to `0`
+    ///   - relation  : The relationship between the left side of the constraint and the right side of the constraint. Defaults to `.equal`
+    ///   - priority  : The priority of the constraint. Defaults to `.required`
+    /// - returns: A new `Dimensions` instance that contains a width and height constraints.
     @discardableResult
     public func constrainHeightToWidth(multiplier: CGFloat = 1, constant: CGFloat = 0, priority: UILayoutPriority = .required) -> NSLayoutConstraint {
         return constrain(dimension: .height, to: .width, of: self, multiplier: multiplier, constant: constant, priority: priority)
     }
 
+    /// Constrains the width and height of the calling view relative to the width and height of the given view.
+    ///
+    /// - parameters:
+    ///   - view    : The view to which we're constrain the calling view.
+    ///   - multiplier: The constant multiplied with the height and width of the given view. Defaults to `1`.
+    ///   - constant: The constant offset for the constraint. Defaults to `0`
+    ///   - relation: The relationship between the width/height and the constant of the constraint. Defaults to `.equal`
+    ///   - priority: The priority of the constraint. Defaults to `.required`
+    /// - returns: A new `Dimensions` instance that contains a width and height constraint.
     @discardableResult
     public func constrainHeightAndWidth(to view: UIView, multiplier: CGFloat = 1, constant: CGFloat = 0, relation: Relation = .equal, priority: UILayoutPriority = .required) -> Dimensions {
         return constrain(dimensions: [.width, .height], relation, to: view, multiplier: multiplier, constant: constant, priority: priority)
     }
 
+    /// Constrains the width and height of the calling view relative to the width and height of the given view.
+    ///
+    /// - parameters:
+    ///   - view      : The view to which we're constrain the calling view.
+    ///   - multiplier: The constant multiplied with the height and width of the given view. Defaults to `1`.
+    ///   - constant  : The constant offset for the constraint. Defaults to `0`
+    ///   - relation  : The relationship between the width/height and the constant of the constraint. Defaults to `.equal`
+    ///   - priority  : The priority of the constraint. Defaults to `.required`
+    /// - returns: A new `Dimensions` instance that contains a width and height constraint.
     @discardableResult
     public func constrainWidthAndHeight(to view: UIView, multiplier: CGFloat = 1, constant: CGFloat = 0, relation: Relation = .equal, priority: UILayoutPriority = .required) -> Dimensions {
         return constrainHeightAndWidth(to: view, multiplier: multiplier, constant: constant, relation: relation, priority: priority)
